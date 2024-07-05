@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crop Recommendation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      color: #4CAF50;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    form div {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      background-color: #e7f3e7;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      color: #4CAF50;
+    }
+
+    .result p {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Crop Recommendation System 🌾</h1>
+
+    <!-- Form -->
+    <form action="/predict" method="POST">
+      <div>
+        <label for="Nitrogen">Nitrogen</label>
+        <input type="number" id="Nitrogen" name="Nitrogen" placeholder="Enter Nitrogen" required>
+      </div>
+      <div>
+        <label for="Phosporus">Phosphorus</label>
+        <input type="number" id="Phosporus" name="Phosporus" placeholder="Enter Phosphorus" required>
+      </div>
+      <div>
+        <label for="Potassium">Potassium</label>
+        <input type="number" id="Potassium" name="Potassium" placeholder="Enter Potassium" required>
+      </div>
+      <div>
+        <label for="Temperature">Temperature</label>
+        <input type="number" id="Temperature" name="Temperature" placeholder="Enter Temperature in °C" required>
+      </div>
+      <div>
+        <label for="Humidity">Humidity</label>
+        <input type="number" id="Humidity" name="Humidity" placeholder="Enter Humidity in %" required>
+      </div>
+      <div>
+        <label for="Ph">pH</label>
+        <input type="number" id="Ph" name="Ph" placeholder="Enter pH value" required>
+      </div>
+      <div>
+        <label for="Rainfall">Rainfall</label>
+        <input type="number" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall in mm" required>
+      </div>
+      <div>
+        <button type="submit">Get Recommendation</button>
+      </div>
+    </form>
+    <!-- End Form -->
+
+    <!-- Result Section -->
+    {% if result %}
+      <div class="result">
+        <h2>Recommended Crop for cultivation is:</h2>
+        <p>{{ result }}</p>
+      </div>
+    {% endif %}
+    <!-- End Result Section -->
+  </div>
+</body>
+</html>
